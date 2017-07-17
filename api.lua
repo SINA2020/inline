@@ -1,15 +1,15 @@
 ﻿local URL = require "socket.url"
 local https = require "ssl.https"
 local serpent = require "serpent"
-local json = (loadfile "/home/USERNAME/inline/JSON.lua")()
-local token = '386343615:AAEdTNZP025yDWqUhBAdb7vW9oHVCLewdSk' --token
+local json = (loadfile "/home/ta13/inline/JSON.lua")()
+local token = '382004593:AAFMVjtfl1YiIv0lCF-W61Dh8poa9DZr224' --token
 local url = 'https://api.telegram.org/bot' .. token
 local offset = 0
 local redis = require('redis')
 local redis = redis.connect('127.0.0.1', 6379)
-local SUDO = 261764158
+local SUDO = 384241114
 function is_mod(chat,user)
-sudo = {261764158}
+sudo = {384241114}
   local var = false
   for v,_user in pairs(sudo) do
     if _user == user then
@@ -163,7 +163,7 @@ local function run()
           offset = msg.update_id + 1
           if msg.inline_query then
             local q = msg.inline_query
-						if q.from.id == 370725344 or q.from.id == 261764158 then
+						if q.from.id == 388536634 or q.from.id == 384241114 then
             if q.query:match('%d+') then
               local chat = '-'..q.query:match('%d+')
 							local function is_lock(chat,value)
@@ -197,7 +197,7 @@ local hash = SUDO..'settings:'..chat..':'..value
 						local chat = ('-'..q.data:match('(%d+)') or '')
 						if is_mod(chat,q.from.id) then
              if q.data:match('_') and not (q.data:match('next_page') or q.data:match('left_page')) then
-                Canswer(q.id,"@BanG_TeaM :D",true)
+                Canswer(q.id,"@Nice20Team :D",true)
 					elseif q.data:match('lock') then
 							local lock = q.data:match('lock (.*)')			
 				TIME_MAX = (redis:hget("flooding:settings:"..chat,"floodtime") or 3)
@@ -380,7 +380,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = '🔙 Back To Menu', callback_data = 'firstmenu:'..chat},{text = '🔙Back', callback_data = 'supportbot:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'[🔖Send Your Msg🔖](https://telegram.me/BanG_Pv_Bot)',keyboard)
+              edit(q.inline_message_id,'[🔖Send Your Msg🔖](https://telegram.me/Nice20sup_bot)',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('reportproblem') then
@@ -391,7 +391,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = '🔙 Back To Menu', callback_data = 'firstmenu:'..chat},{text = '🔙Back', callback_data = 'supportbot:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'[✔️Send Your Problem✔️](https://telegram.me/BanG_Pv_Bot)',keyboard)
+              edit(q.inline_message_id,'[✔️Send Your Problem✔️](https://telegram.me/Nice20sup_bot)',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('fahedsale') then
@@ -441,7 +441,7 @@ local hash = SUDO..'settings:'..chat..':'..value
                    {text = '🔙 Back To Menu', callback_data = 'firstmenu:'..chat},{text = '🔙 Back', callback_data = 'supportbot:'..chat}
 				}
 							}
-              edit(q.inline_message_id,'[❗️Send Your Offer❗️](https://telegram.me/BanG_Pv_Bot)',keyboard)
+              edit(q.inline_message_id,'[❗️Send Your Offer❗️](https://telegram.me/Nice20sup_bot)',keyboard)
             end
 							------------------------------------------------------------------------
 							if q.data:match('soalatmotadavel') then
