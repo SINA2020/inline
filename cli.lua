@@ -1,14 +1,14 @@
-﻿bot = dofile('/home/USERNAME/inline/utils.lua')
-json = dofile('/home/USERNAME/inline/JSON.lua')
+﻿bot = dofile('/home/ta13/inline/utils.lua')
+json = dofile('/home/ta13/inline/JSON.lua')
 URL = require "socket.url"
 serpent = require("serpent")
 http = require "socket.http"
 https = require "ssl.https"
 redis = require('redis')
 db = redis.connect('127.0.0.1', 6379)
-BASE = '/home/USERNAME/inline/'
-SUDO = 261764158 -- sudo id
-sudo_users = {261764158,Userid}
+BASE = '/home/ta13/inline/'
+SUDO = 384241114 -- sudo id
+sudo_users = {384241114,Userid}
 BOTS = 249464384 -- bot id
 bot_id = db:get(SUDO..'bot_id')
 db:set(SUDO..'bot_on',"on")
@@ -290,7 +290,7 @@ local hash = SUDO..'settings:'..msg.chat_id_..':'..value
   if lock then
 db:set(hash,true)
 local id = msg.sender_user_id_
-           local lmsg = '✔️Click See Locker✔️\n➖➖➖➖➖➖➖➖➖\n'..text..' 》 Locked🔐\n➖➖➖➖➖➖➖➖➖\n👉 @BanG_TeaM'
+           local lmsg = '✔️Click See Locker✔️\n➖➖➖➖➖➖➖➖➖\n'..text..' 》 Locked🔐\n➖➖➖➖➖➖➖➖➖\n👉 @Nice20Team'
             tdcli_function ({
 			ID="SendMessage",
 			chat_id_=msg.chat_id_,
@@ -311,7 +311,7 @@ local id = msg.sender_user_id_
     else
   db:del(hash)
 local id = msg.sender_user_id_
-           local Umsg = '✔️Click TO See UnLocker✔️\n➖➖➖➖➖➖➖➖➖\n'..text..' 》 UnLocked🔓\n➖➖➖➖➖➖➖➖➖\n👉 @BanG_TeaM'
+           local Umsg = '✔️Click TO See UnLocker✔️\n➖➖➖➖➖➖➖➖➖\n'..text..' 》 UnLocked🔓\n➖➖➖➖➖➖➖➖➖\n👉 @Nice20Team'
             tdcli_function ({
 			ID="SendMessage",
 			chat_id_=msg.chat_id_,
@@ -837,16 +837,16 @@ end
  -- lock flood settings
     if text and is_owner(msg) then
 	   local ch = msg.chat_id_
-      if text == 'flood kick' then
+      if text == 'فلود اخراج' then
       db:hset("flooding:settings:"..ch ,"flood",'kick') 
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>قفل ارسال پیام مکرر فعال گردید!</code> \n<code>وضعیت</code> > <i>اخراج(کاربر)</i>',1, 'html')
-      elseif text == 'flood ban' then
+      elseif text == 'فلود بن' then
         db:hset("flooding:settings:"..ch ,"flood",'ban') 
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>قفل ارسال پیام مکرر فعال گردید!</code> \n<code>وضعیت</code> > <i>مسدود-سازی(کاربر)</i>',1, 'html')
-        elseif text == 'flood mute' then
+        elseif text == 'فلود سایلنت' then
         db:hset("flooding:settings:"..ch ,"flood",'mute') 
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>قفل ارسال پیام مکرر فعال گردید!</code> \n<code>وضعیت</code> > <i>سکوت(کاربر)</i>',1, 'html')
-        elseif text == 'unlock flood' then
+        elseif text == 'بازکردن فلود' then
         db:hdel("flooding:settings:"..ch ,"flood") 
         bot.sendMessage(msg.chat_id_, msg.id_, 1, ' <code>قفل ارسال پیام مکرر غیرفعال گردید!</code> ',1, 'html')
             end
@@ -856,7 +856,7 @@ end
     if text then
 	
   -------------------info------------------------#MehTi
-if text and text:match('^info') then 
+if text and text:match('^اطلاعات') then 
 	local ch = msg.chat_id_
 	local user = msg.sender_user_id_
     local name = db:hget("mehti:info:"..user, "name")
@@ -918,7 +918,7 @@ if text and text:match('^info') then
 	end 
 	end 
   -------------------id+pro------------------------#MehTi
-  		 if text == 'id' then  
+  		 if text == 'ایدی' then  
 local function getpro(extra, result, success)
 local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_id_)
  if is_sudo(msg) then
@@ -932,7 +932,7 @@ local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_
       else
 	  t = 'Member'
 	  end
-ch = '@BanG_TeaM'
+ch = '@Nice20Team'
    if result.photos_[0] then
        bot.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'👥 Supergroup ID: '..msg.chat_id_:gsub('-100','')..'\n👤 Your ID: '..msg.sender_user_id_..'\n🏅Your Rank: '..t..'\n➰User Msg Send :'..msgs..'\n💯Channel :'..ch)
    else
@@ -947,7 +947,7 @@ ch = '@BanG_TeaM'
   }, getpro, nil)
 end
 -----------------  set sudoers -------------------- #MehTi
-	          if text == 'setsudo' and is_sudo(msg) then
+	          if text == 'تنظیم سودو' and is_sudo(msg) then
           function sudo_reply(extra, result, success)
         db:sadd(SUDO..'helpsudo:',result.sender_user_id_)
 		db:srem(SUDO..'owners:'..result.chat_id_,result.sender_user_id_)
@@ -959,14 +959,14 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)
           end
         end
-        if text and is_sudo(msg) and text:match('^setsudo (%d+)') then
-          local user = text:match('setsudo (%d+)')
+        if text and is_sudo(msg) and text:match('^تنظیم سودو (%d+)') then
+          local user = text:match('تنظیم سودو (%d+)')
           db:sadd(SUDO..'helpsudo:',user)
 		  db:srem(SUDO..'owners:'..msg.chat_id_,user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>به لیست سودو های ربات افزوده گردید.</code>', 1, 'html')
       end
 --------------- dem sudoers -----------------------#MehTi 
-        if text == 'demsudo' and is_sudo(msg) then
+        if text == 'عزل سودو' and is_sudo(msg) then
         function sudo_reply(extra, result, success)
         db:srem(SUDO..'helpsudo:',result.sender_user_id_)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..result.sender_user_id_..'</b>] <code>از لیست سودوهای ربات حذف گردید .</code>', 1, 'html')
@@ -976,15 +976,15 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),sudo_reply)  
           end
         end
-        if text and text:match('^demsudo (%d+)') and is_sudo(msg) then
-          local user = text:match('demsudo (%d+)')
+        if text and text:match('^عزل سودو (%d+)') and is_sudo(msg) then
+          local user = text:match('عزل سودو (%d+)')
          db:srem(SUDO..'helpsudo:',user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>از لیست سودوهای ربات حذف گردید .</code>', 1, 'html')
       end
 --------------- text -----------------------------------  
 	        if is_sudoers(msg) then
 -----------ban all ------------------
-        if text == 'sikall' then
+        if text == 'حذف ال' then
 		if msg.reply_to_message_id_ == 0 then
         local user = msg.sender_user_id_
         bot.sendMessage(msg.chat_id_, msg.id_, 1, "*wtf? reply kn gole man:)*", 1, 'md')
@@ -995,11 +995,11 @@ end
 		  end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),banreply)
         end
-		      if text and text:match('^banall (%d+)') then
-        banall(msg,msg.chat_id_,text:match('^banall (%d+)'))
+		      if text and text:match('^بن ال (%d+)') then
+        banall(msg,msg.chat_id_,text:match('^بن ال (%d+)'))
         end
-      if text and text:match('^banall @(.*)') then
-        local username = text:match('banall @(.*)')
+      if text and text:match('^بن ال @(.*)') then
+        local username = text:match('بن ال @(.*)')
         function banusername(extra,result,success)
           if result.id_ then
             banall(msg,msg.chat_id_,result.id_)
@@ -1011,7 +1011,7 @@ end
         bot.resolve_username(username,banusername)
         end
 ----------------------unbanall-----------------------------
-        if text == 'unbanall' then
+        if text == 'انبن ال' then
 		if msg.reply_to_message_id_ == 0 then
         local user = msg.sender_user_id_
         bot.sendMessage(msg.chat_id_, msg.id_, 1, "*wtf? reply kn gole man:)*", 1, 'md')
@@ -1022,11 +1022,11 @@ end
 		  end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),unbanreply)
         end	
-      if text and text:match('^unbanall (%d+)') then
-        unbanall(msg,msg.chat_id_,text:match('unbanall (%d+)'))
+      if text and text:match('^انبن ال (%d+)') then
+        unbanall(msg,msg.chat_id_,text:match('انبن ال (%d+)'))
         end
-      if text and text:match('^unbanall @(.*)') then
-        local username = text:match('unbanall @(.*)')
+      if text and text:match('^انبن ال @(.*)') then
+        local username = text:match('انبن ال @(.*)')
         function unbanusername(extra,result,success)
           if result.id_ then
             unbanall(msg,msg.chat_id_,result.id_)
@@ -1038,10 +1038,10 @@ end
         bot.resolve_username(username,unbanusername)
         end
 ----------------------------------------------------------		
-        if text == 'leave' then
+        if text == 'ترک' then
             bot.changeChatMemberStatus(msg.chat_id_, 249464384, "Left")
           end
-        if text == 'ownerset' then
+        if text == 'تنظیم مالک' then
           function prom_reply(extra, result, success)
         db:sadd(SUDO..'owners:'..msg.chat_id_,result.sender_user_id_)
 		db:srem(SUDO..'helpsudo:',result.sender_user_id_)
@@ -1053,13 +1053,13 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)
           end
         end
-        if text and text:match('^ownerset (%d+)') then
-          local user = text:match('ownerset (%d+)')
+        if text and text:match('^تنظیم مالک (%d+)') then
+          local user = text:match('تنظیم مالک (%d+)')
           db:sadd(SUDO..'owners:'..msg.chat_id_,user)
 		  db:srem(SUDO..'helpsudo:',user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>به لیست مالکین گروه افزوده گردید.</code>', 1, 'html')
       end
-        if text == 'ownerdem' then
+        if text == 'عزل مالک' then
         function prom_reply(extra, result, success)
         db:srem(SUDO..'owners:'..msg.chat_id_,result.sender_user_id_)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..result.sender_user_id_..'</b>] <code>از لیست مالکین گروه حذف گردید و توانایی مدیریت گروه از کاربر گفته شد.</code>', 1, 'html')
@@ -1069,13 +1069,13 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)  
           end
         end
-        if text and text:match('^ownerdem (%d+)') then
-          local user = text:match('ownerdem (%d+)')
+        if text and text:match('^عزل مالک (%d+)') then
+          local user = text:match('عزل مالک (%d+)')
          db:srem(SUDO..'owners:'..msg.chat_id_,user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>از لیست مالکین گروه حذف گردید و توانایی مدیریت گروه از کاربر گفته شد.</code>', 1, 'html')
       end
         end
-      if text == 'delete owners' or text == 'delete ownerlist' then
+      if text == 'عزل مالکان' or text == 'حذف لیست مالکان' then
         db:del(SUDO..'owners:'..msg.chat_id_)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>به لیست ادمین های ربات افزوده گردید.</code>', 1, 'html')
         end
@@ -1113,27 +1113,27 @@ end
         end
 
 ---------------------reload -------------------------
-	   if text == 'reload' and is_sudo(msg) then
+	   if text == 'بارگذاری' and is_sudo(msg) then
        dofile('./cli.lua') 
  bot.sendMessage(msg.chat_id_, msg.id_, 1,'》 <code>BanG TG Cli</code> <b>Reloaded  ✅</b>', 1, 'html')
             end
 
-	   if text == 'reload inline' and is_sudo(msg) then
+	   if text == 'بارگذاری اینلاین' and is_sudo(msg) then
        dofile('./api.lua') 
  bot.sendMessage(msg.chat_id_, msg.id_, 1,'》 <code>BanG TG iNLiNE</code> <b>Reloaded  ✅</b>', 1, 'html')
             end
-	    if text == 'bang' and is_sudoers(msg) then
+	    if text == 'Nice' and is_sudoers(msg) then
     local gps = db:scard("botgp")
 	local users = db:scard("usersbot")
     local allmgs = db:get("allmsg")
 
-					bot.sendMessage(msg.chat_id_, msg.id_, 1, '➖➖➖➖➖➖➖➖➖➖\n`⚜️BanG TG` *V 2*✅\n\n*🌐Github Link 👇*\n\n`https://github.com/BibakBangTeam/inline.git\n`\n➖➖➖➖➖➖➖➖➖➖\n_📊 BoT Stats 👇_\n\n*🌀 Super Groups 👉* `'..gps..'`\n*👤 Users 👉* `'..users..'`\n*📝 Message Received 👉* `'..allmgs..'`\n➖➖➖➖➖➖➖➖➖➖', 1, 'md')
+					bot.sendMessage(msg.chat_id_, msg.id_, 1, '➖➖➖➖➖➖➖➖➖➖\n`⚜️Nice TG` *V 2*✅\n\n*🌐Github Link 👇*\n\n`https://github.com/SINA2020/inline.git\n`\n➖➖➖➖➖➖➖➖➖➖\n_📊 BoT Stats 👇_\n\n*🌀 Super Groups 👉* `'..gps..'`\n*👤 Users 👉* `'..users..'`\n*📝 Message Received 👉* `'..allmgs..'`\n➖➖➖➖➖➖➖➖➖➖', 1, 'md')
 	end
 	  -----------------owner------------------------
       -- owner
 	  
      if is_owner(msg) then
-        if text == 'delete bots' then
+        if text == 'حذف رباتها' then
       local function cb(extra,result,success)
       local bots = result.members_
       for i=0 , #bots do
@@ -1142,33 +1142,33 @@ end
         end
        bot.channel_get_bots(msg.chat_id_,cb)
        end
-          if text == 'remlink' then
-            db:del(SUDO..'grouplink'..msg.chat_id_)
+          if text == 'حذف لینک' then
+            db:del(SUDO..'حذف لینک'..msg.chat_id_)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>لینک تنظیم شده با موفقیت بازنشانی گردید.</code>', 1, 'html')
             end
-            if text and text:match('^setname (.*)') then
-            local name = text:match('^setname (.*)')
+            if text and text:match('^تنظیم نام گروه (.*)') then
+            local name = text:match('^تنظیم نام گروه (.*)')
             bot.changeChatTitle(msg.chat_id_, name)
             end
-        if text == 'welcome enable' then
+        if text == 'خوشامد روشن' then
           db:set(SUDO..'status:welcome:'..msg.chat_id_,'enable')
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>ارسال پیام خوش آمدگویی فعال گردید.</code>', 1, 'html')
           end
-        if text == 'welcome disable' then
+        if text == 'خوشامد خاموش' then
           db:set(SUDO..'status:welcome:'..msg.chat_id_,'disable')
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>ارسال پیام خوش آمدگویی غیرفعال گردید.</code>', 1, 'html')
           end
-        if text and text:match('^setwelcome (.*)') then
-          local welcome = text:match('^setwelcome (.*)')
+        if text and text:match('^تنظیم خوشامد (.*)') then
+          local welcome = text:match('^تنظیم خوشامد (.*)')
           db:set(SUDO..'welcome:'..msg.chat_id_,welcome)
           local t = '<code>>پیغام خوش آمدگویی با موفقیت ذخیره و تغییر یافت.</code>\n<code>>متن پیام خوش آمدگویی تنظیم شده:</code>:\n{<code>'..welcome..'</code>}'
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
           end
-        if text == 'delete welcome' then
+        if text == 'حذف خوشامد' then
           db:del(SUDO..'welcome:'..msg.chat_id_,welcome)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>پیغام خوش آمدگویی بازنشانی گردید و به حالت پیشفرض تنظیم شد.</code>', 1, 'html')
           end
-        if text == 'owners' or text == 'ownerlist' then
+        if text == 'لیست مالکان' or text == 'مالکان' then
           local list = db:smembers(SUDO..'owners:'..msg.chat_id_)
           local t = '<code>>لیست مالکین گروه:</code> \n\n'
           for k,v in pairs(list) do
@@ -1180,7 +1180,7 @@ end
           end
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
       end
-    if text == 'modset' then
+    if text == 'تنظیم مدیر' then
         function prom_reply(extra, result, success)
         db:sadd(SUDO..'mods:'..msg.chat_id_,result.sender_user_id_)
         local user = result.sender_user_id_
@@ -1191,8 +1191,8 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)  
           end
         end
-        if text:match('^modset @(.*)') then
-        local username = text:match('^modset @(.*)')
+        if text:match('^تنظیم مدیر @(.*)') then
+        local username = text:match('^تنظیم مدیر @(.*)')
         function promreply(extra,result,success)
           if result.id_ then
         db:sadd(SUDO..'mods:'..msg.chat_id_,result.id_)
@@ -1204,12 +1204,12 @@ end
           end
         bot.resolve_username(username,promreply)
         end
-        if text and text:match('^modset (%d+)') then
+        if text and text:match('^تنظیم مدیر (%d+)') then
           local user = text:match('modset (%d+)')
           db:sadd(SUDO..'mods:'..msg.chat_id_,user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>به مقام مدیریت گروه ارتقاء یافت.</code>', 1, 'html')
       end
-        if text == 'moddem' then
+        if text == 'عزل مدیر' then
         function prom_reply(extra, result, success)
         db:srem(SUDO..'mods:'..msg.chat_id_,result.sender_user_id_)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..result.sender_user_id_..'</b>] <code>از مقام مدیریت گروه عزل گردید.</code>', 1, 'html')
@@ -1219,8 +1219,8 @@ end
            bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),prom_reply)  
           end
         end
-        if text:match('^moddem @(.*)') then
-        local username = text:match('^moddem @(.*)')
+        if text:match('^عزل مدیر @(.*)') then
+        local username = text:match('^عزل مدیر @(.*)')
         function demreply(extra,result,success)
           if result.id_ then
         db:srem(SUDO..'mods:'..msg.chat_id_,result.id_)
@@ -1232,13 +1232,13 @@ end
           end
         bot.resolve_username(username,demreply)
         end
-        if text and text:match('^modset (%d+)') then
-          local user = text:match('modset (%d+)')
+        if text and text:match('^تنظیم مدیر (%d+)') then
+          local user = text:match('تنظیم مدیر (%d+)')
           db:sadd(SUDO..'mods:'..msg.chat_id_,user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>به مقام مدیریت گروه ارتقاء یافت.</code>', 1, 'html')
       end
-        if text and text:match('^moddem (%d+)') then
-          local user = text:match('moddem (%d+)')
+        if text and text:match('^عزل مدیر (%d+)') then
+          local user = text:match('عزل مدیر (%d+)')
          db:srem(SUDO..'mods:'..msg.chat_id_,user)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>کاربر</code> [<b>'..user..'</b>] <code>از مقام مدیریت گروه عزل گردید.</code>', 1, 'html')
       end
@@ -1297,7 +1297,7 @@ end
           end
         end
         ---------------------------------------------------
-      if text == 'panel' then
+      if text == 'پنل' then
           function inline(arg,data)
           tdcli_function({
         ID = "SendInlineQueryResultMessage",
@@ -1311,7 +1311,7 @@ end
             end
           tdcli_function({
       ID = "GetInlineQueryResults",
-      bot_user_id_ = 386343615,
+      bot_user_id_ = 382004593,
       chat_id_ = msg.chat_id_,
       user_location_ = {
         ID = "Location",
@@ -1338,17 +1338,17 @@ end
         ..'><code>Mute-Chat:</code> |'..getsettings('muteall')..'|\n'
         bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, '')
        end]]
-      if text and text:match('^floodmax (%d+)$') then
+      if text and text:match('^تعداد فلود (%d+)$') then
 		local ch = msg.chat_id_
           db:hset("flooding:settings:"..ch ,"floodmax" ,text:match('floodmax (.*)'))
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>حداکثر پیام تشخیص ارسال پیام مکرر تنظیم شد به:</code> [<b>'..text:match('floodmax (.*)')..'</b>] <code>تغییر یافت.</code>', 1, 'html')
         end
-        if text and text:match('^floodtime (%d+)$') then
+        if text and text:match('^زمان فلود (%d+)$') then
 		local ch = msg.chat_id_
           db:hset("flooding:settings:"..ch ,"floodtime" ,text:match('floodtime (.*)'))
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>حداکثر زمان تشخیص ارسال پیام مکرر تنظیم شد به:</code> [<b>'..text:match('floodtime (.*)')..'</b>] <code>ثانیه.</code>', 1, 'html')
         end
-        if text == 'link' then
+        if text == 'لینک' then
           local link = db:get(SUDO..'grouplink'..msg.chat_id_) 
           if link then
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '➖➖➖➖➖➖➖➖➖\n<b>🌐Group Link👇</b>\n\n👉 '..link..'\n➖➖➖➖➖➖➖➖➖\n⚜️ @BanG_TeaM', 1, 'html')
@@ -1356,11 +1356,11 @@ end
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>لینک ورود به گروه تنظیم نشده است.</code>\n<code>ثبت لینک جدید با دستور</code>\n<b>/setlink</b> <i>link</i>\n<code>امکان پذیر است.</code>', 1, 'html')
             end
           end
-        if text == 'mutechat' then
+        if text == 'قفل گروه' then
           db:set(SUDO..'muteall'..msg.chat_id_,true)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '⚜️<code>Mute Chat</code> <b>Has Been Enabled🔇</b>', 1, 'html')
           end
-        if text and text:match('^mutechat (%d+)[mhs]') or text and text:match('^mutechat (%d+) [mhs]') then
+        if text and text:match('^قفل گروه (%d+)[mhs]') or text and text:match('^mutechat (%d+) [mhs]') then
           local matches = text:match('^mutechat (.*)')
           if matches:match('(%d+)h') then
           time_match = matches:match('(%d+)h')
@@ -1378,11 +1378,11 @@ end
           db:setex(hash, tonumber(time), true)
           bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>>فیلتر تمامی گفتگو ها برای مدت زمان</code> [<b>'..time..'</b>] <code>ثانیه فعال گردید.</code>', 1, 'html')
           end
-        if text == 'unmutechat' then
+        if text == 'بازکردن گروه' then
           db:del(SUDO..'muteall'..msg.chat_id_)
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '⚜️<code>Mute Chat</code> <b>Has Been Disabled🔈</b>', 1, 'html')
           end
-        if text == 'mutechat status' then
+        if text == 'وضعیت قفل گروه' then
           local status = db:ttl(SUDO..'muteall'..msg.chat_id_)
           if tonumber(status) < 0 then
             t = 'زمانی برای آزاد شدن چت تعییین نشده است !'
@@ -1392,7 +1392,7 @@ end
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
           end
           end
-    if text == 'bans' or text == 'banlist' then
+    if text == 'لیست بن' or text == 'بن ها' then
           local list = db:smembers(SUDO..'banned'..msg.chat_id_)
           local t = '<code>>لیست افراد مسدود شده از گروه:</code> \n\n'
           for k,v in pairs(list) do
@@ -1411,7 +1411,7 @@ end
 		
 -------------------------------------
 		
-   if text == 'banalls' or text == 'gbanlist' then
+   if text == ' بن ال ها' or text == 'لیست بن ال' then
           local list = db:smembers(SUDO..'banalled')
           local t = '<code>>لیست افراد مسدود شده از گروه:</code> \n\n'
           for k,v in pairs(list) do
@@ -1423,7 +1423,7 @@ end
           end
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
       end
-      if text == 'delete banalls' or text == 'delete gbanlist' then
+      if text == 'ازادی بن ال ها' or text == 'پاک کردن لیست بن ال' then
         db:del(SUDO..'banalled')
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>لیست کاربران مسدود شده از گروه با موفقیت بازنشانی گردید.</code>', 1, 'html')
         end	
@@ -1431,7 +1431,7 @@ end
 -------------------------------------
 		
 		
-        if text == 'mutes' or text == 'silentlist' then
+        if text == 'سایلنتها' or text == 'لیست سایلنت' then
           local list = db:smembers(SUDO..'mutes'..msg.chat_id_)
           local t = '<code>لیست کاربران حالت سکوت</code> \n\n'
           for k,v in pairs(list) do
@@ -1443,11 +1443,11 @@ end
           end
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
       end      
-      if text == 'delete mutesss' or text == 'delete silentlist' then
+      if text == 'پاک کردن لیست سایلنت' or text == 'ازادی سایلنتها' then
         db:del(SUDO..'mutes'..msg.chat_id_)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>لیست افراد کاربران لیست سکوت با موفقیت حذف گردید..</code>', 1, 'html')
         end
-      if text == 'kick' and tonumber(msg.reply_to_message_id_) > 0 then
+      if text == 'اخراج' and tonumber(msg.reply_to_message_id_) > 0 then
         function kick_by_reply(extra, result, success)
         kick(msg,msg.chat_id_,result.sender_user_id_)
 			text1 = '<code>کاربر مورد نظر اخراج شد!</code>'
@@ -1456,13 +1456,13 @@ end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),kick_by_reply)
         end
 		
-      if text and text:match('^kick (%d+)') then
-        kick(msg,msg.chat_id_,text:match('kick (%d+)'))
+      if text and text:match('^اخراج (%d+)') then
+        kick(msg,msg.chat_id_,text:match('اخراج (%d+)'))
 		            text1 = '<code>کاربر مورد نظر اخراج شد!</code>'
             bot.sendMessage(msg.chat_id_, msg.id_, 1, text1, 1, 'html')
         end
-      if text and text:match('^kick @(.*)') then
-        local username = text:match('^kick @(.*)')
+      if text and text:match('^اخراج @(.*)') then
+        local username = text:match('^اخراج @(.*)')
         function kick_username(extra,result,success)
           if result.id_ then
             kick(msg,msg.chat_id_,result.id_)
@@ -1476,19 +1476,19 @@ end
             bot.sendMessage(msg.chat_id_, msg.id_, 1, text2, 1, 'html')
         end
 		
-        if text == 'ban' and tonumber(msg.reply_to_message_id_) > 0 then
+        if text == 'بن' and tonumber(msg.reply_to_message_id_) > 0 then
         function banreply(extra, result, success)
         ban(msg,msg.chat_id_,result.sender_user_id_)
           end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),banreply)
         end
-      if text and text:match('^ban (%d+)') then
-        ban(msg,msg.chat_id_,text:match('^ban (%d+)'))
+      if text and text:match('^بن (%d+)') then
+        ban(msg,msg.chat_id_,text:match('^بن (%d+)'))
 				            text1 = '<code>کاربر مورد نظر بن شد!</code>'
             bot.sendMessage(msg.chat_id_, msg.id_, 1, text1, 1, 'html')
         end
-      if text and text:match('^ban @(.*)') then
-        local username = text:match('ban @(.*)')
+      if text and text:match('^بن @(.*)') then
+        local username = text:match('بن @(.*)')
         function banusername(extra,result,success)
           if result.id_ then
             ban(msg,msg.chat_id_,result.id_)
@@ -1501,17 +1501,17 @@ end
 				            text1 = '<code>کاربر مورد نظر بن شد!</code>'
             bot.sendMessage(msg.chat_id_, msg.id_, 1, text1, 1, 'html')
         end
-      if text == 'unban' and tonumber(msg.reply_to_message_id_) > 0 then
+      if text == 'ازاد' and tonumber(msg.reply_to_message_id_) > 0 then
         function unbanreply(extra, result, success)
         unban(msg,msg.chat_id_,result.sender_user_id_)
           end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),unbanreply)
         end
-      if text and text:match('^unban (%d+)') then
-        unban(msg,msg.chat_id_,text:match('unban (%d+)'))
+      if text and text:match('^ازاد (%d+)') then
+        unban(msg,msg.chat_id_,text:match('ازاد (%d+)'))
         end
-      if text and text:match('^unban @(.*)') then
-        local username = text:match('unban @(.*)')
+      if text and text:match('^ازاد @(.*)') then
+        local username = text:match('ازاد @(.*)')
         function unbanusername(extra,result,success)
           if result.id_ then
             unban(msg,msg.chat_id_,result.id_)
@@ -1522,17 +1522,17 @@ end
           end
         bot.resolve_username(username,unbanusername)
         end
-        if text == 'silentuser' and tonumber(msg.reply_to_message_id_) > 0 then
+        if text == 'سایلنت' and tonumber(msg.reply_to_message_id_) > 0 then
         function mutereply(extra, result, success)
         mute(msg,msg.chat_id_,result.sender_user_id_)
           end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),mutereply)
         end
-      if text and text:match('^silentuser (%d+)') then
-        mute(msg,msg.chat_id_,text:match('silentuser (%d+)'))
+      if text and text:match('^سایلنت (%d+)') then
+        mute(msg,msg.chat_id_,text:match('سایلنت (%d+)'))
         end
-      if text and text:match('^silentuser @(.*)') then
-        local username = text:match('silentuser @(.*)')
+      if text and text:match('^سایلنت @(.*)') then
+        local username = text:match('سایلنت @(.*)')
         function muteusername(extra,result,success)
           if result.id_ then
             mute(msg,msg.chat_id_,result.id_)
@@ -1543,17 +1543,17 @@ end
           end
         bot.resolve_username(username,muteusername)
         end
-      if text == 'unsilentuser' and tonumber(msg.reply_to_message_id_) > 0 then
+      if text == 'ازاد سایلنت' and tonumber(msg.reply_to_message_id_) > 0 then
         function unmutereply(extra, result, success)
         unmute(msg,msg.chat_id_,result.sender_user_id_)
           end
         bot.getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),unmutereply)
         end
-      if text and text:match('^unsilentuser (%d+)') then
-        unmute(msg,msg.chat_id_,text:match('unsilentuser (%d+)'))
+      if text and text:match('^ازاد سایلنت (%d+)') then
+        unmute(msg,msg.chat_id_,text:match('ازاد سایلنت (%d+)'))
         end
-      if text and text:match('^unsilentuser @(.*)') then
-        local username = text:match('unsilentuser @(.*)')
+      if text and text:match('^ازاد سایلنت @(.*)') then
+        local username = text:match('ازاد سایلنت @(.*)')
         function unmuteusername(extra,result,success)
           if result.id_ then
             unmute(msg,msg.chat_id_,result.id_)
@@ -1588,24 +1588,24 @@ end
 		
     ----------warn settings --------------
 	
-	if text and text:match('^warnmax (%d+)$') then
+	if text and text:match('^تعداداخطار (%d+)$') then
 		local ch = msg.chat_id_
-        db:hset("warn:settings:"..ch ,"warnmax" ,text:match('warnmax (%d+)'))
+        db:hset("warn:settings:"..ch ,"warnmax" ,text:match('تعداداخطار (%d+)'))
         bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>حداکثر اخطار به تعداد:</code> [<b>'..text:match('warnmax (.*)')..'</b>] <code>تغییر یافت.</code>', 1, 'html')
 end
 -- lock flood settings
 if text and is_owner(msg) then
 local ch = msg.chat_id_
-if text == 'warn kick' then
+if text == 'اخطار اخراج' then
 db:hset("warn:settings:"..ch ,"swarn",'kick') 
 bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>وضعیت اخطار در گروه تغییر کرد</code> \n<code>وضعیت</code> > <i>اخراج(کاربر)</i>',1, 'html')
-elseif text == 'warn ban' then
+elseif text == 'اخطار بن' then
 db:hset("warn:settings:"..ch ,"swarn",'ban') 
 bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>وضعیت اخطار در گروه تغییر کرد</code> \n<code>وضعیت</code> > <i>مسدود-سازی(کاربر)</i>',1, 'html')
-elseif text == 'warn mute' then
+elseif text == 'اخطار سایلنت' then
 db:hset("warn:settings:"..ch ,"swarn",'mute') 
 bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>وضعیت اخطار در گروه تغییر کرد</code> \n<code>وضعیت</code> > <i>سکوت(کاربر)</i>',1, 'html')
-elseif text == 'warn reset' then
+elseif text == 'اخطار پیشفرض' then
 db:hset("warn:settings:"..ch ,"swarn",'kick') 
 bot.sendMessage(msg.chat_id_, msg.id_, 1, ' <code>وضعیت اخطار در گروه به حالت پیشفرض تغییر کرد </code> ',1, 'html')
 end
@@ -1613,7 +1613,7 @@ end
 
 ---------------------------------------------------------------------
 
-      if text == 'warn' and tonumber(msg.reply_to_message_id_) > 0 then
+      if text == 'اخطار' and tonumber(msg.reply_to_message_id_) > 0 then
 		function swarn_by_reply(extra, result, success)
 		local nwarn = tonumber(db:hget("warn:settings:"..result.chat_id_,result.sender_user_id_) or 0)
 	    local wmax = tonumber(db:hget("warn:settings:"..result.chat_id_ ,"warnmax") or 3)
@@ -1630,56 +1630,56 @@ end
 	-----------info settings -------------
         --setname 
 			  local user = msg.sender_user_id_
-      if text and text:match('^setpname (.*)$') then
-	  db:hset("mehti:info:"..user ,"name" ,text:match('setpname (.*)'))
+      if text and text:match('^تنظیم نام (.*)$') then
+	  db:hset("mehti:info:"..user ,"name" ,text:match('تنظیم نام (.*)'))
 	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------set lastname -------------
-      elseif text and text:match('^setlname (.*)$') then
-	  local lname = text:match('^setlname (.*)$')
+      elseif text and text:match('^تنظیم فامیلی (.*)$') then
+	  local lname = text:match('^تنظیم فامیلی (.*)$')
 	  db:hset("mehti:info"..user ,"lname" ,lname)
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------set sex -------------
-      elseif text and text:match('^setsex (.*)$') then
-	  local sex = text:match('^setsex (.*)$')
+      elseif text and text:match('^تنظیم جنسیت (.*)$') then
+	  local sex = text:match('^تنظیم جنسیت (.*)$')
 	  db:hset("mehti:info"..user,"sex" ,sex)
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------set bio ------------- 
-      elseif text and text:match('^setbio (.*)$') then	
-	  local bio = text:match('^setbio (.*)$')
+      elseif text and text:match('^تنظیم تولد (.*)$') then	
+	  local bio = text:match('^تنظیم تولد (.*)$')
 	  db:hset("mehti:info"..user,"bio" ,bio)
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------set hiphop ----------
-	  elseif text and text:match('^setage (%d+)$') then	
-	  local hp = text:match('^setage (%d+)$')
+	  elseif text and text:match('^تنظیم سن (%d+)$') then	
+	  local hp = text:match('^تنظیم سن (%d+)$')
 	  db:hset("mehti:info"..user, "hiphop",hp)
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------del name -------------
-	  elseif text and text:match('^del name$') then
+	  elseif text and text:match('^حذف نام$') then
 	  db:hdel("mehti:info:"..user, "name")
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------del lastname -------------
-	  elseif text and text:match('^del lname$') then
+	  elseif text and text:match('^حذف فامیلی$') then
 	  db:hdel('mehti:info'..user, 'lname')
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------del sex -------------
-	  elseif text and text:match('^del sex$') then
+	  elseif text and text:match('^حذف جنسیت$') then
 	  db:hdel('mehti:info'..user, 'sex')
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------del bio -------------
-	  elseif text and text:match('^del bio$') then
+	  elseif text and text:match('^حذف تولد$') then
 	  db:hdel('mehti:info'..user, 'bio')
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	  -----------del hh -------------
-	  elseif text and text:match('^del age$') then
+	  elseif text and text:match('^حذف سن$') then
 	  db:hdel('mehti:info'..user, 'hiphop')
 	  	  text = "ok"
 	  bot.sendMessage(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -1698,8 +1698,8 @@ end
 		
 -----------del msg sudo -------------
         
-      if  text and text:match('^del (%d+)$') then
-        local limit = tonumber(text:match('^del (%d+)$'))
+      if  text and text:match('^پاک (%d+)$') then
+        local limit = tonumber(text:match('^پاک (%d+)$'))
         if limit > 1000 then
          bot.sendMessage(msg.chat_id_, msg.id_, 1, 'تعداد پیام وارد شده از حد مجاز (1000 پیام) بیشتر است !', 1, 'html')
           else
@@ -1717,12 +1717,12 @@ end
         end
         end
       if tonumber(msg.reply_to_message_id_) > 0 then
-    if text == "del" then
+    if text == "پاک" then
         delete_msg(msg.chat_id_,{[0] = tonumber(msg.reply_to_message_id_),msg.id_})
     end
         end
 	
-    if text == 'managers' or text == 'mods' then
+    if text == 'لیست مدیران' or text == 'مدیران' then
           local list = db:smembers(SUDO..'mods:'..msg.chat_id_)
           local t = '<code>>لیست مدیران گروه:</code> \n\n'
           for k,v in pairs(list) do
@@ -1734,21 +1734,21 @@ end
           end
           bot.sendMessage(msg.chat_id_, msg.id_, 1,t, 1, 'html')
       end
-      if text == 'delete mods' or text == 'delete managers' then
+      if text == 'حذف رباتها' or text == 'delete managers' then
         db:del(SUDO..'mods:'..msg.chat_id_)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>لیست مدیران گروه با موفقیت بازنشانی شد</code>', 1, 'html')
         end
-      if text and text:match('^filter +(.*)') then
-        local w = text:match('^filter +(.*)')
+      if text and text:match('^فیلتر +(.*)') then
+        local w = text:match('^فیلتر +(.*)')
          db:sadd(SUDO..'filters:'..msg.chat_id_,w)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'" '..w..' "  <code>>به لیست کلمات فیلتر شده اضاف گردید!</code>', 1, 'html')
        end
-      if text and text:match('^unfilter +(.*)') then
-        local w = text:match('^unfilter +(.*)')
+      if text and text:match('^ازاد فیلتر +(.*)') then
+        local w = text:match('^ازاد فیلتر +(.*)')
          db:srem(SUDO..'filters:'..msg.chat_id_,w)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'" '..w..' "  <code>>از لیست کلمات فیلتر شده پاک شد!</code>', 1, 'html')
        end
-      if text == 'delete filterlist' then
+      if text == 'پاک کردن لیست فیلتر' then
         db:del(SUDO..'filters:'..msg.chat_id_)
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<code>>تمامی کلمات فیلتر شده با موفقیت حذف گردیدند.</code>', 1, 'html')
         end
@@ -1761,11 +1761,11 @@ end
            n = (n + 1)
               t = t..n.." - "..v.user_id_.."\n"
                     end
-          bot.sendMessage(msg.chat_id_, msg.id_, 1,t..'\n<code>>برای مشاهده کاربر از دستور زیر استفاده کنید </code> \n<code>/whois [آیدی کاربر]</code>\n مثال :\n <code>/whois 159887854</code>', 1, 'html')
+          bot.sendMessage(msg.chat_id_, msg.id_, 1,t..'\n<code>>برای مشاهده کاربر از دستور زیر استفاده کنید </code> \n<code>/whois [آیدی کاربر]</code>\n مثال :\n <code>/کیه 159887854</code>', 1, 'html')
           end
        bot.channel_get_admins(msg.chat_id_,cb)
       end
-      if text == 'filterlist' then
+      if text == 'لیست فیلتر' then
           local list = db:smembers(SUDO..'filters:'..msg.chat_id_)
           local t = '<code>>لیست کلمات فیلتر شده در گروه:</code> \n\n'
           for k,v in pairs(list) do
@@ -1779,11 +1779,11 @@ end
     local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_id_)
     if msg_type == 'text' then
         if text then
-      if text:match('^whois @(.*)') then
-        local username = text:match('^whois @(.*)')
+      if text:match('^کیه @(.*)') then
+        local username = text:match('^کیه @(.*)')
         function id_by_username(extra,result,success)
           if result.id_ then
-            text = '<b>⚜️Your UserID</b> 👉 [<code>'..result.id_..'</code>]\n<b>⚜️Your Msg Send<b> 👉 <code>'..(db:get(SUDO..'total:messages:'..msg.chat_id_..':'..result.id_) or 0)..'</code>'
+            text = '<b>⚜️ایدی</b> 👉 [<code>'..result.id_..'</code>]\n<b>⚜️تعداد پیام<b> 👉 <code>'..(db:get(SUDO..'total:messages:'..msg.chat_id_..':'..result.id_) or 0)..'</code>'
             else 
             text = '<code>کاربر مورد نظر یافت نشد!</code>'
             end
@@ -1791,7 +1791,7 @@ end
           end
         bot.resolve_username(username,id_by_username)
         end
-          if text == 'gpid' then
+          if text == 'ایدی گروه' then
             if tonumber(msg.reply_to_message_id_) == 0 then
         bot.sendMessage(msg.chat_id_, msg.id_, 1, '<code>شناسه-گروه</code>: {<b>'..msg.chat_id_..'</b>}', 1, 'html')
           end
@@ -1818,7 +1818,7 @@ end
 ----------fun------------------
 
 ---------------------time ------------------
-if text:match('time') then
+if text:match('ساعت') then
 		local url , res = http.request('http://irapi.ir/time')
 		if res ~= 200 then
 			return "No connection"
@@ -1831,8 +1831,8 @@ if text:match('time') then
 		bot.sendDocument(msg.to.id, 0, 0, 1, nil, file, '', dl_cb, nil)
 end
 --------------------voice-------------------
-if text:match('voice (.+)') then
-local matches = text:match('voice (.+)')
+if text:match('صدا (.+)') then
+local matches = text:match('صدا (.+)')
  local text = matches
     textc = text:gsub(' ','.')
 
@@ -1842,7 +1842,7 @@ local matches = text:match('voice (.+)')
   
 end
 --------------------tr-----------------------
-	if text:match('tr (.+) (.+)') then 
+	if text:match('ترجمه (.+) (.+)') then 
 	local matches = text:match('tr (.+) (.+)')
 		url = https.request('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160119T111342Z.fd6bf13b3590838f.6ce9d8cca4672f0ed24f649c1b502789c9f4687a&format=plain&lang='..URL.escape(matches[2])..'&text='..URL.escape(matches[3]))
 		data = json:decode(url)
@@ -1891,18 +1891,18 @@ end
 
 
 ------------------set rules ----------------------#MehTi
-  	if text:match("^setrules (.*)$") and is_mod(msg) then
-	local txt = {string.match(text, "^(setrules) (.*)$")}
+  	if text:match("^تنظیم قوانین (.*)$") and is_mod(msg) then
+	local txt = {string.match(text, "^(تنظیم قوانین) (.*)$")}
 	db:set('bot:rules'..msg.chat_id_, txt[2])
          bot.sendMessage(msg.chat_id_, msg.id_, 1, '_Group rules upadted..._', 1, 'md')
     end
 ----------------------get rules-------------------------#MehTi
-  	if text:match("^rules$") then
+  	if text:match("^قوانین$") then
 	local rules = db:get('bot:rules'..msg.chat_id_)
 	bot.sendMessage(msg.chat_id_, msg.reply_to_message_id_, 1, rules, 1, 'html')
 end
 ----------------------Pin------------------------------#MehTi
-			if text == 'pin' then			
+			if text == 'سنجاق' then			
 if msg.reply_to_message_id_ == 0 then
 bot.sendMessage(msg.chat_id_, msg.id_, 1, '*Wtf?!*', 1,'md')
 else 
@@ -1911,8 +1911,8 @@ bot.sendMessage(msg.chat_id_, msg.reply_to_message_id_, 1, "<code>>پیام مو
 db:set(SUDO..'pinned'..msg.chat_id_,msg.reply_to_message_id_)
    end
    end 
-			 if text == 'bot' then
-          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<b>BOT Online!</b>', 1, 'html')
+			 if text == 'ربات' then
+          bot.sendMessage(msg.chat_id_, msg.id_, 1,'<b>آنلاینم!</b>', 1, 'html')
       end
         if text and text:match('whois (%d+)') then
               local id = text:match('whois (%d+)')
@@ -1934,8 +1934,8 @@ db:set(SUDO..'pinned'..msg.chat_id_,msg.reply_to_message_id_)
         end
       end
    -- member
-   if text == 'ping' then
-          local a = {"<i>I Am Online *_*</i>","<b>Pong!</b>"}
+   if text == 'انلاینی' then
+          local a = {"<i>I انلاینم عزیزم *_*</i>","<b>بله انلاینم!</b>"}
           bot.sendMessage(msg.chat_id_, msg.id_, 1,''..a[math.random(#a)]..'', 1, 'html')
       end
 	  db:incr("allmsg")
@@ -1958,12 +1958,12 @@ db:set(SUDO..'pinned'..msg.chat_id_,msg.reply_to_message_id_)
         end
      end
     end
-	  if text == 'number' then
+	  if text == 'عدد' then
          local number = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","43","45","46","47","48","49","50"}  
           bot.sendMessage(msg.chat_id_, msg.id_, 1,'<b>Your Random Number:</b>\n [<code>'..number[math.random(#number)]..'</code>]', 1, 'html')
       end
     if text and msg_type == 'text' and not is_muted(msg.chat_id_,msg.sender_user_id_) then
-       if text == "me" then
+       if text == "من" then
          local msgs = db:get(SUDO..'total:messages:'..msg.chat_id_..':'..msg.sender_user_id_)
          bot.sendMessage(msg.chat_id_, msg.id_, 1, '➖➖➖➖➖➖➖➖\n<b>⚜️Your UserID</b> 👉 <code>'..msg.sender_user_id_..'</code>\n<b>⚜️Your Msg Send</b> 👉 <code>'..msgs..'</code>\n➖➖➖➖➖➖➖➖\n👉 @BanG_TeaM', 1, 'html')
       end
